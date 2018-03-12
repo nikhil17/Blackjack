@@ -5,31 +5,56 @@ import java.util.*;
  */
 
 public class Hand {
-    private List<Card> cards = new ArrayList<Card>();
-    boolean hasSplit = false;
-    boolean hasAce = false;
+    private List<Card> cards;
+    private boolean hasAce;
     private int handValue;
+    private boolean canSplit;
 
-    public Hand(List<Card> cards){
-        this.cards = cards;
+    public Hand(){
+        cards = new ArrayList<>();
         handValue = 0;
-        for (Card c: cards){
-            int value = c.getValue();
-            if (value == 1){
-                hasAce = true;
-            }
-            handValue += value;
-        }
-
+        canSplit = false;
+        hasAce = false;
     }
 
-    public void addCard(Card card){
-        handValue += card.getValue();
+    public Hand(Card card){
+        cards = new ArrayList<>();
         cards.add(card);
     }
 
-    public int getHandSize(){
-        return cards.size();
+
+    public boolean canSplit(){
+        return (cards.size() == 2 && cards.get(0).getValue() == cards.get(1).getValue());
+    }
+
+
+
+
+    public int getHandValue(){
+        return handValue;
+    }
+
+    public void clear(){
+        cards.clear();
+        handValue = 0;
+        canSplit = false;
+        hasAce = false;
+    }
+
+    public void addCard(Card card){
+        int cardValue = card.getValue();
+        handValue += cardValue;
+        cards.add(card);
+        if (cardValue == 11){
+            hasAce = true;
+        }
+        if(handValue > 21 && hasAce){
+            handValue -= 10;
+        }
+    }
+
+    public Card removeCard(int index){
+        return cards.remove(index);
     }
 
     public String toString(){
@@ -40,6 +65,25 @@ public class Hand {
         s.append("Hand value = "+ handValue);
         return s.toString();
 
+    }
+
+    public String firstCardString(){
+        return cards.get(0).toString();
+    }
+
+    public static void main (String [] args){
+        MultiDeck d = new MultiDeck(2);
+        d.shuffle();
+        Hand h = new Hand();
+
+//        Card a = new Card(SuitEnum.CLOVES, 1);
+//        Card b = new Card(SuitEnum.SPADES, 1);
+        h.addCard(new Card(SuitEnum.CLOVES, 1));
+        h.addCard(new Card(SuitEnum.SPADES, 1));
+        h.addCard(new Card(SuitEnum.SPADES, 1));
+        h.addCard(new Card(SuitEnum.CLOVES, 1));
+
+        System.out.println(h.toString());
     }
 
 

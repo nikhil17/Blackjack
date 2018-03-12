@@ -10,7 +10,10 @@ public class Card {
     public Card(SuitEnum suit, int number){
         this.number = number;
         this.suit = suit;
-        if (number >= 10){
+        if (number == 1){
+            value = 11;
+        }
+        else if (number >= 10){
             value = 10;
         }
         else value = number;
@@ -20,9 +23,6 @@ public class Card {
         return value;
     }
 
-    public int getNumber(){
-        return number;
-    }
 
     public boolean getVisibility(){
         return visibility;

@@ -6,6 +6,7 @@ public class MultiDeck {
     private int size;
     private Card [] deck;
     private int cardsUsed;
+    private final int CARDS_PER_SUIT = 13;
 
     public MultiDeck(int noOfDecks){
         this.noOfDecks = noOfDecks;
@@ -14,7 +15,7 @@ public class MultiDeck {
         int cardIndex = 0;
         for(int i = 0; i < noOfDecks; i++){
             for (SuitEnum suit : SuitEnum.values()){
-                for (int j = 1; j <= 13; j ++){
+                for (int j = 1; j <= CARDS_PER_SUIT; j ++){
                     deck[cardIndex++] = new Card(suit, j);
                 }
             }
@@ -30,7 +31,7 @@ public class MultiDeck {
             // shuffle
             shuffle();
         }
-        return deck[0];
+        return deck[cardsUsed++];
     }
 
     public void printDeck(){
