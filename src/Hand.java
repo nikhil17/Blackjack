@@ -10,56 +10,56 @@ public class Hand {
     private int handValue;
     private boolean canSplit;
 
-    public Hand(){
+    public Hand() {
         cards = new ArrayList<>();
         handValue = 0;
         canSplit = false;
         hasAce = false;
     }
 
-    public Hand(Card card){
+    public Hand(Card card) {
         cards = new ArrayList<>();
         cards.add(card);
     }
 
 
-    public boolean canSplit(){
+    public boolean canSplit() {
         return (cards.size() == 2 && cards.get(0).getValue() == cards.get(1).getValue());
     }
 
 
 
 
-    public int getHandValue(){
+    public int getHandValue() {
         return handValue;
     }
 
-    public void clear(){
+    public void clear() {
         cards.clear();
         handValue = 0;
         canSplit = false;
         hasAce = false;
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         int cardValue = card.getValue();
         handValue += cardValue;
         cards.add(card);
-        if (cardValue == 11){
+        if (cardValue == 11) {
             hasAce = true;
         }
-        if(handValue > 21 && hasAce){
+        if(handValue > 21 && hasAce) {
             handValue -= 10;
         }
     }
 
-    public Card removeCard(int index){
+    public Card removeCard(int index) {
         return cards.remove(index);
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder s = new StringBuilder();
-        for (Card c : cards){
+        for (Card c : cards) {
             s.append(c.toString() + "\n");
         }
         s.append("Hand value = "+ handValue);
@@ -67,11 +67,11 @@ public class Hand {
 
     }
 
-    public String firstCardString(){
+    public String firstCardString() {
         return cards.get(0).toString();
     }
 
-    public static void main (String [] args){
+    public static void main (String [] args) {
         MultiDeck d = new MultiDeck(2);
         d.shuffle();
         Hand h = new Hand();

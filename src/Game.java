@@ -6,7 +6,7 @@ public class Game {
     private Hand hand;
     private Player player;
 
-    public Game(Player player, Hand hand, int bet){
+    public Game(Player player, Hand hand, int bet) {
         this.bet = bet;
         this.hand = hand;
         this.player = player;
@@ -24,9 +24,6 @@ public class Game {
         return hand;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
 
     public Player getPlayer() {
         return player;
@@ -36,7 +33,7 @@ public class Game {
         this.player = player;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("Player " +player.getNumber() + "\n");
         s.append("Hand " + hand.toString() + "\n");

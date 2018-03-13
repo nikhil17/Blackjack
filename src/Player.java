@@ -7,26 +7,25 @@ import java.util.List;
 public class Player {
     private int money;
     private int number;
-    boolean hasSplit = false;
 
-    public Player(){
+    public Player() {
         money = 1000;
     }
 
-    public Player(int number){
+    public Player(int number) {
         this();
         this.number = number;
     }
 
-    public int getNumber(){
+    public int getNumber() {
         return number;
     }
 
-    public int getMoney(){
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(int money){
+    public void setMoney(int money) {
         this.money = money;
     }
 

@@ -7,34 +7,34 @@ public class Card {
     private boolean visibility = false;
     private int value = 0;
 
-    public Card(SuitEnum suit, int number){
+    public Card(SuitEnum suit, int number) {
         this.number = number;
         this.suit = suit;
-        if (number == 1){
+        if (number == 1) {
             value = 11;
         }
-        else if (number >= 10){
+        else if (number >= 10) {
             value = 10;
         }
         else value = number;
     }
 
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 
 
-    public boolean getVisibility(){
+    public boolean getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(boolean visibility){
+    public void setVisibility(boolean visibility) {
         this.visibility = visibility;
     }
 
-    public String toString(){
+    public String toString() {
         String card;
-        switch (number){
+        switch (number) {
             case 1:
                 card = "Ace";
                 break;
